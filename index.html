@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="إدارة محتوى وتصميم منشورات وإدارة صفحات التواصل الاجتماعي باحترافية."
+    />
+    <title>PIXORA | إدارة محتوى وتصميم</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b1020;
+        --panel: #111a2e;
+        --panel2: #16223a;
+        --text: #f4f7ff;
+        --muted: #aab5ca;
+        --accent: #b6f36b;
+        --accent2: #7dd3fc;
+        --line: rgba(255, 255, 255, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "IBM Plex Sans Arabic", sans-serif;
+        line-height: 1.8;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: min(1160px, calc(100% - 40px));
+        margin: auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(11, 16, 32, 0.82);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        height: 78px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: Alexandria, sans-serif;
+        font-weight: 800;
+        font-size: 21px;
+        letter-spacing: 1px;
+      }
+      .brand img {
+        height: 46px;
+        width: auto;
+        display: block;
+      }
+      .brand span {
+        color: var(--accent);
+      }
+      .links {
+        display: flex;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .links a:hover {
+        color: var(--accent);
+      }
+      .nav-cta,
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 19px;
+        border-radius: 12px;
+        background: var(--accent);
+        color: #14200a;
+        font-weight: 700;
+        font-size: 14px;
+        transition: 0.2s;
+      }
+      .nav-cta:hover,
+      .btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.05);
+      }
+      .menu {
+        display: none;
+        background: none;
+        border: 1px solid var(--line);
+        color: white;
+        border-radius: 10px;
+        padding: 8px 12px;
+        font-size: 20px;
+      }
+      .hero {
+        padding: 100px 0 88px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(182, 243, 107, 0.13),
+          transparent 68%
+        );
+        top: -220px;
+        left: -160px;
+        pointer-events: none;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+        gap: 55px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        border: 1px solid rgba(182, 243, 107, 0.3);
+        color: var(--accent);
+        padding: 6px 13px;
+        border-radius: 99px;
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 14px var(--accent);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1 {
+        font-family: Alexandria, sans-serif;
+        font-size: clamp(34px, 5vw, 60px);
+        line-height: 1.35;
+        letter-spacing: -1.8px;
+        margin-bottom: 20px;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
+      .hero p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 2;
+        margin-bottom: 28px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--text);
+        border: 1px solid var(--line);
+      }
+      .hero-card {
+        background: linear-gradient(145deg, #1b2944, #10182b);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 22px;
+        transform: rotate(-2deg);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+      }
+      .mini-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 18px;
+      }
+      .hero-img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 19px;
+        aspect-ratio: 3/2;
+        object-fit: cover;
+      }
+      .mini-bottom {
+        display: flex;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 11px;
+        padding-top: 15px;
+      }
+      section {
+        padding: 82px 0;
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 25px;
+        margin-bottom: 32px;
+      }
+      .kicker {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+      .section-head h2 {
+        font-family: Alexandria, sans-serif;
+        font-size: clamp(25px, 3vw, 37px);
+        margin: 7px 0 0;
+      }
+      .section-head p {
+        color: var(--muted);
+        max-width: 440px;
+        margin: 0;
+        font-size: 14px;
+      }
+      .services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .service {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 19px;
+        padding: 25px;
+        transition: 0.25s;
+      }
+      .service:hover {
+        transform: translateY(-5px);
+        border-color: rgba(182, 243, 107, 0.4);
+      }
+      .service-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        background: rgba(182, 243, 107, 0.12);
+        color: var(--accent);
+        font-size: 22px;
+        margin-bottom: 18px;
+      }
+      .service h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+      .service p {
+        font-size: 13px;
+        color: var(--muted);
+        margin: 0;
+      }
+      .portfolio {
+        background: #0e1628;
+      }
+      .filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .filter {
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--muted);
+        padding: 8px 15px;
+        border-radius: 99px;
+        font: inherit;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .filter.active,
+      .filter:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #14200a;
+      }
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .work-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 19px;
+        overflow: hidden;
+        transition: 0.25s;
+      }
+      .work-card[hidden] {
+        display: none;
+      }
+      .work-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(182, 243, 107, 0.4);
+      }
+      .work-cover {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: #0b1020;
+        aspect-ratio: 1/1;
+        cursor: zoom-in;
+        overflow: hidden;
+      }
+      .work-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s;
+      }
+      .work-card:hover .work-cover img {
+        transform: scale(1.04);
+      }
+      .work-info {
+        padding: 17px 18px 19px;
+      }
+      .work-info h3 {
+        font-size: 15px;
+        margin: 0 0 4px;
+      }
+      .work-info p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 10px;
+        color: var(--accent);
+        background: rgba(182, 243, 107, 0.1);
+        padding: 3px 9px;
+        border-radius: 20px;
+        margin-top: 12px;
+      }
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        background: rgba(5, 8, 16, 0.92);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        cursor: zoom-out;
+      }
+      .lightbox.open {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: min(92vw, 880px);
+        max-height: 90vh;
+        border-radius: 14px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      }
+      .lightbox button {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        background: var(--panel);
+        color: var(--text);
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .process-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+      .step {
+        border-top: 1px solid var(--line);
+        padding-top: 17px;
+      }
+      .step b {
+        font-family: Alexandria, sans-serif;
+        font-size: 28px;
+        color: var(--accent);
+      }
+      .step h3 {
+        font-size: 15px;
+        margin: 7px 0;
+      }
+      .step p {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0;
+      }
+      .contact {
+        padding: 75px 0;
+      }
+      .contact-box {
+        border: 1px solid rgba(182, 243, 107, 0.25);
+        border-radius: 28px;
+        padding: 48px;
+        background:
+          radial-gradient(
+            circle at 5% 0%,
+            rgba(182, 243, 107, 0.13),
+            transparent 35%
+          ),
+          var(--panel);
+      }
+      .contact-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+      }
+      .contact h2 {
+        font-family: Alexandria, sans-serif;
+        font-size: clamp(25px, 3vw, 38px);
+        margin: 8px 0;
+      }
+      .contact p {
+        color: var(--muted);
+        margin: 0;
+      }
+      .contact-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 24px 0;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text);
+      }
+      .footer-brand img {
+        height: 34px;
+        width: auto;
+      }
+      @media (max-width: 850px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+        .hero-card {
+          max-width: 470px;
+          margin: auto;
+        }
+        .services,
+        .work-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .process-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .contact-inner {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .container {
+          width: min(100% - 28px, 1160px);
+        }
+        .nav {
+          height: 68px;
+        }
+        .brand img {
+          height: 40px;
+        }
+        .links {
+          display: none;
+          position: absolute;
+          top: 68px;
+          right: 14px;
+          left: 14px;
+          padding: 18px;
+          background: var(--panel);
+          border: 1px solid var(--line);
+          border-radius: 15px;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .links.open {
+          display: flex;
+        }
+        .menu {
+          display: block;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero {
+          padding: 68px 0 55px;
+        }
+        .hero p {
+          font-size: 15px;
+        }
+        section {
+          padding: 60px 0;
+        }
+        .section-head {
+          display: block;
+        }
+        .section-head p {
+          margin-top: 12px;
+        }
+        .services,
+        .work-grid {
+          grid-template-columns: 1fr;
+        }
+        .process-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .contact-box {
+          padding: 28px 22px;
+        }
+        .footer-inner {
+          display: block;
+        }
+        .footer-inner span {
+          display: block;
+          margin-top: 7px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container nav">
+        <a class="brand" href="#home">
+          <img src="images/logo.png" alt="شعار PIXORA" />
+          <span style="color: var(--text)">PIX<span>ORA</span></span>
+        </a>
+        <nav class="links" id="navLinks">
+          <a href="#home">الرئيسية</a><a href="#services">الخدمات</a
+          ><a href="#portfolio">الأعمال</a><a href="#process">طريقة العمل</a
+          ><a href="#contact">تواصل معي</a>
+        </nav>
+        <a class="nav-cta" href="#contact">ابدأ مشروعك ↗</a
+        ><button class="menu" id="menuBtn" aria-label="فتح القائمة">☰</button>
+      </div>
+    </header>
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="dot"></span> صناعة محتوى يترك انطباعاً
+            </div>
+            <h1>خلّي حضور مشروعك<br /><em>يحچي عن احترافيتك.</em></h1>
+            <p>
+              أساعد المشاريع والعلامات التجارية على الظهور بصورة أقوى من خلال
+              إدارة صفحات التواصل الاجتماعي، تصميم منشورات جذابة، وصناعة محتوى
+              يقرّبك من جمهورك.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#portfolio">شاهد أعمالي <span>↙</span></a
+              ><a class="btn secondary" href="#contact">خلّينا نبدأ</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="mini-top">
+              <span>CREATIVE CONTENT / 2026</span><span>01 — 04</span>
+            </div>
+            <img
+              class="hero-img"
+              src="images/branding.jpg"
+              alt="PIXORA - Creative Content & Social Media"
+            />
+            <div class="mini-bottom">
+              <span>PIXORA PORTFOLIO</span><span>DESIGNED WITH PURPOSE</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="services">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">WHAT I DO</div>
+              <h2>خدمات تساعد مشروعك يكبر</h2>
+            </div>
+            <p>
+              من الفكرة إلى النشر، أهتم بالتفاصيل حتى تكون صفحة مشروعك واضحة،
+              مرتبة، ومتناسقة.
+            </p>
+          </div>
+          <div class="services">
+            <div class="service">
+              <div class="service-icon">✳</div>
+              <h3>تصميم منشورات احترافية</h3>
+              <p>
+                تصاميم سوشيال ميديا متناسقة مع هوية مشروعك وتلفت انتباه الجمهور.
+              </p>
+            </div>
+            <div class="service">
+              <div class="service-icon">▤</div>
+              <h3>إدارة محتوى الصفحات</h3>
+              <p>تنظيم أفكار المحتوى، كتابة الكابشن، وتجهيز جدول نشر مناسب.</p>
+            </div>
+            <div class="service">
+              <div class="service-icon">◈</div>
+              <h3>إدارة صفحات التواصل</h3>
+              <p>
+                متابعة حضور الصفحة، ترتيب المنشورات، والحفاظ على مظهر احترافي
+                ومتجدد.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="portfolio" id="portfolio">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">SELECTED WORK</div>
+              <h2>نماذج من الأعمال</h2>
+            </div>
+            <p>
+              نماذج من تصاميمي وإعلاناتي السابقة. اضغط على أي صورة لتكبيرها.
+            </p>
+          </div>
+          <div class="filters">
+            <button class="filter active" data-filter="all">الكل</button
+            ><button class="filter" data-filter="social">منشورات سوشيال</button
+            ><button class="filter" data-filter="branding">هوية ومحتوى</button
+            ><button class="filter" data-filter="ads">إعلانات</button>
+          </div>
+          <div class="work-grid" id="workGrid">
+            <article class="work-card" data-category="social">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-01.jpg"
+                  alt="تصميم إعلان خدمة إدارة الصفحات - بنفسجي"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>إعلان خدمة إدارة الصفحات</h3>
+                <p>
+                  تصميم عصري بألوان هادئة يعرض مزايا الخدمة بوضوح مع دعوة مباشرة
+                  للتواصل.
+                </p>
+                <span class="tag">منشورات سوشيال</span>
+              </div>
+            </article>
+            <article class="work-card" data-category="ads">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-02.jpg"
+                  alt="تصميم إعلان إدارة الصفحات وتصميم بوستات - أزرق وذهبي"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>إعلان إدارة الصفحات وتصميم البوستات</h3>
+                <p>
+                  تصميم فخم بألوان الأزرق والذهبي يبرز المزايا والخدمات ويدفع
+                  العميل لاتخاذ الإجراء.
+                </p>
+                <span class="tag">إعلانات</span>
+              </div>
+            </article>
+            <article class="work-card" data-category="ads">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-03.jpg"
+                  alt="تصميم إعلان سوشيال ميديا - داكن وذهبي"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>إعلان سوشيال ميديا بطابع ذهبي</h3>
+                <p>
+                  ترتيب بصري بسيط وقوي يوصل الرسالة بسرعة مع عناصر تدل على
+                  النمو والتفاعل.
+                </p>
+                <span class="tag">إعلانات</span>
+              </div>
+            </article>
+            <article class="work-card" data-category="social">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-04.jpg"
+                  alt="تصميم بوست خدمة إدارة الصفحات - أصفر وبنفسجي"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>بوست ترويجي لإدارة الصفحات</h3>
+                <p>
+                  تصميم مشرق وقريب من الجمهور يعرض الخدمات بقائمة واضحة وسهلة
+                  القراءة.
+                </p>
+                <span class="tag">منشورات سوشيال</span>
+              </div>
+            </article>
+            <article class="work-card" data-category="branding">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-05.jpg"
+                  alt="تصميم اللوغو وإدارة المحتوى"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>تصميم اللوغو وإدارة المحتوى</h3>
+                <p>
+                  هوية بصرية متكاملة تجمع تصميم الشعار وإنشاء المحتوى وإدارة
+                  الحسابات والتسويق.
+                </p>
+                <span class="tag">هوية ومحتوى</span>
+              </div>
+            </article>
+            <article class="work-card" data-category="ads">
+              <button class="work-cover" type="button" aria-label="تكبير الصورة">
+                <img
+                  src="images/work-06.jpg"
+                  alt="باقة صناعة محتوى وتصاميم احترافية"
+                  loading="lazy"
+                />
+              </button>
+              <div class="work-info">
+                <h3>باقة محتوى وتصاميم متكاملة</h3>
+                <p>
+                  عرض باقة تشمل تصاميم ومنشورات تفاعلية مع نماذج حقيقية من
+                  الأعمال وسعر واضح.
+                </p>
+                <span class="tag">إعلانات</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section id="process">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="kicker">HOW I WORK</div>
+              <h2>خطوات العمل</h2>
+            </div>
+            <p>
+              آلية واضحة حتى تعرف شنو راح يصير من أول تواصل إلى تسليم المحتوى.
+            </p>
+          </div>
+          <div class="process-grid">
+            <div class="step">
+              <b>01</b>
+              <h3>نفهم مشروعك</h3>
+              <p>نتعرف على نشاطك، جمهورك، والهدف من الصفحة.</p>
+            </div>
+            <div class="step">
+              <b>02</b>
+              <h3>نخطط للمحتوى</h3>
+              <p>نحدد الأفكار والرسائل المناسبة ونرتب الأولويات.</p>
+            </div>
+            <div class="step">
+              <b>03</b>
+              <h3>نصمم ونجهز</h3>
+              <p>ننفذ التصاميم ونكتب النصوص بأسلوب يناسب علامتك.</p>
+            </div>
+            <div class="step">
+              <b>04</b>
+              <h3>نسلّم ونتابع</h3>
+              <p>نراجع العمل ونسلّم المحتوى الجاهز للنشر أو نتولى إدارته.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact" id="contact">
+        <div class="container">
+          <div class="contact-box">
+            <div class="contact-inner">
+              <div>
+                <div class="kicker">LET'S WORK TOGETHER</div>
+                <h2>عندك مشروع؟ خلّينا نطوّر حضوره.</h2>
+                <p>راسلني واحچيلي عن مشروعك والخدمة اللي تحتاجها.</p>
+              </div>
+              <div class="contact-actions">
+                <a
+                  class="btn"
+                  href="https://wa.me/9647711127968"
+                  target="_blank"
+                  rel="noopener"
+                  >تواصل عبر واتساب ↗</a
+                ><a
+                  class="btn secondary"
+                  href="https://instagram.com/8_2.b"
+                  target="_blank"
+                  rel="noopener"
+                  >إنستغرام ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container footer-inner">
+        <a class="footer-brand" href="#home"
+          ><img src="images/logo.png" alt="شعار PIXORA" /><strong>PIXORA.</strong></a
+        ><span>© 2026 PIXORA — جميع الحقوق محفوظة</span
+        ><span>إدارة محتوى • تصميم • إدارة صفحات</span>
+      </div>
+    </footer>
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button type="button" id="lbClose" aria-label="إغلاق">✕</button>
+      <img id="lbImg" src="" alt="" />
+    </div>
+    <script>
+      const menuBtn = document.getElementById("menuBtn"),
+        navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", () =>
+        navLinks.classList.toggle("open"),
+      );
+      navLinks
+        .querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => navLinks.classList.remove("open")),
+        );
+      document.querySelectorAll(".filter").forEach((btn) =>
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const category = btn.dataset.filter;
+          document
+            .querySelectorAll(".work-card")
+            .forEach(
+              (card) =>
+                (card.hidden =
+                  category !== "all" && card.dataset.category !== category),
+            );
+        }),
+      );
+      const lb = document.getElementById("lightbox"),
+        lbImg = document.getElementById("lbImg");
+      const closeLb = () => {
+        lb.classList.remove("open");
+        lb.setAttribute("aria-hidden", "true");
+      };
+      document.querySelectorAll(".work-cover").forEach((b) =>
+        b.addEventListener("click", () => {
+          const img = b.querySelector("img");
+          lbImg.src = img.src;
+          lbImg.alt = img.alt;
+          lb.classList.add("open");
+          lb.setAttribute("aria-hidden", "false");
+        }),
+      );
+      lb.addEventListener("click", closeLb);
+      document.addEventListener("keydown", (e) => e.key === "Escape" && closeLb());
+    </script>
+  </body>
+</html>
